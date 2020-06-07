@@ -42,5 +42,6 @@ public class Main {
 		frame.remove(currentScreen);
 		currentScreen = newScreen;
 		frame.add(newScreen);
+		frame.validate();
 	}
 }
