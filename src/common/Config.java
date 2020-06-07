@@ -2,6 +2,7 @@ package common;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -32,8 +33,28 @@ public class Config {
 				e.printStackTrace();
 			}
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			
+			System.out.println("No config file found, writing out defaults");
+			try (FileOutputStream outputStream = new FileOutputStream(filename+".properties")) {
+
+	            int read;
+	            byte[] bytes = new byte[1024];
+	            
+	            InputStream inputStream = Config.class.getResourceAsStream(filename+".properties");	
+	            while ((read = inputStream.read(bytes)) != -1) {
+	                outputStream.write(bytes, 0, read);
+	            }
+
+				// commons-io
+	            //IOUtils.copy(inputStream, outputStream);
+
+	        } catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		//secondary (development)
