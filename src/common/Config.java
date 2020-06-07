@@ -39,15 +39,8 @@ public class Config {
 		//secondary (development)
 		try {
 			inputStreamLocal = new FileInputStream(filename+".mine.properties");
-			try {
-				properties.load(inputStreamLocal);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			properties.load(inputStreamLocal);
+		} catch (IOException ignore) {
 		}
 	}
 	
