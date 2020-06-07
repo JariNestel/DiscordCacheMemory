@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import common.Config;
+import panel.MenuPanel;
 import panel.StartPanel;
 
 public class Main {
@@ -33,6 +34,8 @@ public class Main {
         frame.setVisible(true);
         
         images = startScreen.getImages();
+        
+        changeScreen(new MenuPanel());
 	}
 
 	public static void changeScreen(JPanel newScreen) {
