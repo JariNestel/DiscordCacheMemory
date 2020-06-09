@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import common.ShuffleArrayList;
+import common.SquareJPanel;
 import main.Main;
 
 public class GamePanel extends JPanel {
@@ -37,7 +38,7 @@ public class GamePanel extends JPanel {
 		//this.invalidate();
 	}
 	
-	private static class GameFieldPanel extends JPanel {
+	private static class GameFieldPanel extends SquareJPanel {
 		
 		public GameFieldPanel(int size) {
 			this.setLayout(new GridLayout(size, size));
@@ -59,7 +60,7 @@ public class GamePanel extends JPanel {
 		
 	}
 	
-	private static class GameCard extends JPanel {
+	private static class GameCard extends SquareJPanel {
 		
 		private final BufferedImage image;
 		public boolean taken = false;
@@ -68,7 +69,7 @@ public class GamePanel extends JPanel {
 		public GameCard(BufferedImage image) {
 			this.image = image;
 			//this.setPreferredSize(new Dimension(50, 50));
-			setMinimumSize(new Dimension(50, 50));
+			//setMinimumSize(new Dimension(50, 50));
 		}
 		
 		public boolean equals(GameCard c) {
