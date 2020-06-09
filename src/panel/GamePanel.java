@@ -3,7 +3,10 @@ package panel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -30,7 +33,7 @@ public class GamePanel extends JPanel {
 	
 	public GamePanel(int size) {
 		this.size = size;
-		this.setLayout(new BorderLayout());
+		this.setLayout(new FlowLayout());
 		gameField = new GameFieldPanel(size);
 		this.add(gameField); //thanks bine, would have never searched here
 		//this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
@@ -42,6 +45,8 @@ public class GamePanel extends JPanel {
 		
 		public GameFieldPanel(int size) {
 			this.setLayout(new GridLayout(size, size));
+			//this.setLayout(new GridBagLayout());
+			//this.setBorder(BorderFactory.createLineBorder(Color.GREEN));
 			ShuffleArrayList<BufferedImage> mixedImages = new ShuffleArrayList<BufferedImage>(Main.images.size());
 			mixedImages.addAll(Main.images);
 			mixedImages.shuffle();
@@ -56,6 +61,17 @@ public class GamePanel extends JPanel {
 			System.out.println(cards.size());
 			
 			cards.forEach(card -> this.add(card));
+			/*GridBagConstraints gbc = new GridBagConstraints();
+			gbc.fill = gbc.BOTH;
+			gbc.weightx = 1.0d;
+			gbc.weighty = 2.0d;
+			for (int i = 0; i < size; i++) {
+				gbc.gridx = i;
+				for (int j = 0; j < size; j++) {
+					gbc.gridy = j;
+					this.add(cards.get(i*size+j), gbc);
+				}
+			}*/
 		}
 		
 	}
