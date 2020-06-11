@@ -19,6 +19,7 @@ public class MenuPanel extends JPanel {
 
 	private JLabel sizeLabel;
 	private JSlider sizeSlider;
+	private JSlider playerSlider;
 	private JButton start;
 	private JButton close;
 	
@@ -33,11 +34,20 @@ public class MenuPanel extends JPanel {
 		//sizeSlider.setPaintTrack(true);
 		sizeSlider.setSnapToTicks(true);
 		this.add(sizeSlider);
+		
+		playerSlider = new JSlider(2, 8);
+		playerSlider.setMinorTickSpacing(1);
+		playerSlider.setMajorTickSpacing(2);
+		playerSlider.setPaintTicks(true);
+		playerSlider.setPaintLabels(true);
+		playerSlider.setSnapToTicks(true);
+		this.add(playerSlider);
+		
 		start = new JButton("Start");
 		start.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Main.changeScreen(new GamePanel(sizeSlider.getValue()));
+				Main.changeScreen(new GamePanel(sizeSlider.getValue(), playerSlider.getValue()));
 			}	
 		});
 		this.add(start);

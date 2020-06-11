@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import common.ShuffleArrayList;
@@ -31,7 +32,7 @@ public class GamePanel extends JPanel {
 	private GameFieldPanel gameField;
 	private GameInfoPanel gameScore;
 	
-	public GamePanel(int size) {
+	public GamePanel(int size, int playerCount) {
 		this.size = size;
 		this.setLayout(new FlowLayout());
 		gameField = new GameFieldPanel(size);
@@ -112,6 +113,30 @@ public class GamePanel extends JPanel {
 		
 		public GameInfoPanel() {
 			
+		}
+		
+	}
+	
+	private static class GamePlayer extends JPanel {
+		
+		List<GameCardPair> pairs = new ArrayList<GameCardPair>();
+		
+		private final int id;
+		
+		private JLabel name;
+		private JLabel pairCount;
+		
+		public GamePlayer(int id) {
+			this.id = id;
+			name = new JLabel("Player #"+id);
+			this.add(name);
+			pairCount = new JLabel("#pairs: "+0);
+			this.add(pairCount);
+		}
+		
+		public void addPair(GameCardPair pair) {
+			pairs.add(pair);
+			pairCount.setText("#pairs: "+pairs.size());
 		}
 		
 	}
