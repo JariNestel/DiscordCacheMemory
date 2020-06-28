@@ -8,9 +8,9 @@ If there are not enough images, you won't be able to play.
 ##### v0.1 Image Display Test
 
 Features:
-- startup screen geetting the user with a simple hello
+- startup screen getting the user with a simple hello
 - main menu options where game size can be customized
 - main menu buttons starting and closing the game
 - game screen: should fill whole window
-- game screen: images being streteched as necesarry
+- game screen: images being stretched as necessary
 - config: default config file should be written to disk if missing
